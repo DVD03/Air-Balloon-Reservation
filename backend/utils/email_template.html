@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receipt - SkyHigh Balloons</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        margin: 0;
+        padding: 0;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .logo img {
+        width: 50px;
+        height: 50px;
+      }
+      .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+      }
+      .header h1 {
+        margin: 0;
+        color: #e63946;
+      }
+      .greeting {
+        margin: 30px 0;
+        font-size: 16px;
+        color: #333;
+      }
+      .receipt-header {
+        background-color: #f1f1f1;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+      }
+      .receipt-details {
+        margin-top: 10px;
+      }
+      .item-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .item-name {
+        font-weight: bold;
+      }
+      .item-details {
+        font-size: 12px;
+        color: #666;
+      }
+      .total {
+        font-weight: bold;
+        font-size: 16px;
+        color: #111;
+      }
+      .footer {
+        margin-top: 40px;
+        font-size: 12px;
+        text-align: center;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="logo">
+          <img
+            src="https://res.cloudinary.com/dhk07z8rt/image/upload/v1746987853/balloon-logo_vsesmj.png"
+            alt=""
+          />
+          <h1>SkyHigh Balloons</h1>
+        </div>
+        <p>Your Adventure, Elevated.</p>
+      </div>
+
+      <div class="greeting">
+        Hello {{username}},<br />
+        Thank you for your purchase! Below is your payment receipt.
+      </div>
+
+      <div class="receipt-header">
+        <div>
+          <strong>Order ID:</strong> {{orderId}}<br />
+          <strong>Date:</strong> {{date}}
+        </div>
+      </div>
+
+      <div class="receipt-details">
+        {{#each items}}
+        <div class="item-row">
+          <div>
+            <div class="item-name">{{this.name}}</div>
+            <div class="item-details">Quantity: {{this.quantity}}</div>
+          </div>
+          <div>Rs. {{multiply this.price this.quantity}}</div>
+        </div>
+        {{/each}}
+
+        <div class="item-row total">
+          <div>Total</div>
+          <div>Rs. {{total}}</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        This email is a receipt for your recent purchase.<br />
+        If you have any questions, contact us at support@skyhighballoons.com
+      </div>
+    </div>
+  </body>
+</html>
